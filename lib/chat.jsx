@@ -55,14 +55,14 @@ export default function Chat() {
       headers: {
         "Content-Type": "application/json" // Set content type to JSON
       },
-      body: JSON.stringify({ message: userMessage, socket_id: socketId }) // Send message and socket ID in the request body
+      body: JSON.stringify({ message: userMessage.trim(), socket_id: socketId }) // Send message and socket ID in the request body
     })
-    setMessageLog(prev => [...prev, {selfMessage: true, message: userMessage}]) // Append user message to the message log
+    setMessageLog(prev => [...prev, {selfMessage: true, message: userMessage.trim()}]) // Append user message to the message log
     setUserMessage("") // Clear the input field after submission
   }
 
   function handleInputChange(e) {
-    setUserMessage(e.target.value.trim()) // Update user message state on input change
+    setUserMessage(e.target.value) // Update user message state on input change
   }
 
   return (
