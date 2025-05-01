@@ -637,10 +637,124 @@ textarea.form-field {
   padding: 0 10px;
 }
 
-.contact-list td {
+.contact-list td { 
   font-size: 1rem;
 }
 
-.contact-list tr:nth-child(even) {
-  background-color: #f1f1f1;
+.contact-list tr:nth-child(even) { 
+  background-color: #f1f1f1; 
+}
+
+/* Chat Related CSS */
+.open-chat { 
+  position: fixed;
+  bottom: 16px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: white;
+  display: flex;
+}
+
+.open-chat svg { 
+  color: #5061F6;
+  margin: auto;
+}
+
+/* Chat Box */
+.chat-container {
+  position: fixed; /* Fixed position for chat box */
+  bottom: 0;
+  right: 20px;
+  width: 290px;
+  height: 420px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Column layout for chat box */
+  z-index: 100; /* Ensure chat box is on top */
+
+  transform: translateY(100%); /* Start off-screen */
+  opacity: 0; /* Start invisible */
+  visibility: hidden; /* Start hidden */
+  transition: opacity .3s ease-out, transform .3s ease-out, visibility .3s ease-out; /* Transition for smooth effect */
+}
+
+.chat-container--visible { /* Class to make chat box visible */
+  opacity: 1; /* Make it visible */
+  visibility: visible; /* Make it visible */
+  transform: translateY(0); /* Move it into view */
+}
+
+.chat-log { /* Chat log area */
+  flex: 1; /* Take up remaining space */
+  overflow-y: auto; /* Scrollable area for chat messages */
+  padding: 10px 14px;
+}
+
+.chat-title-bar {
+  padding: 10px 14px;
+  background-color: #5061F6;
+  color: white;
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space between title and close button */
+}
+
+.chat-title-bar h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.chat-title-bar svg {
+  position: relative; /* Positioning for close button */
+  top: 3px;
+}
+
+/* Chat message styles */
+.chat-message {
+  margin: 0 60px 5px 0; /* Margin for chat messages */
+  display: flex; 
+}
+
+.chat-message-inner { /* Inner container for chat message */
+  background-color: #AFAFAF;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: .85rem;
+}
+
+.chat-message--self .chat-message-inner { /* Styles for self messages */
+  background-color: #3653F6;
+}
+
+.chat-message--self { 
+  justify-content: flex-end; /* Align self messages to the right */
+  margin: 0 0 5px 60px; 
+}
+
+.chat-container input {  /* Input field for chat messages */
+  width: 100%; 
+  padding: 10px; 
+  box-sizing: border-box;  
+  border: none;
+  font-family: inherit;
+  font-size: .85rem;
+  outline: none; 
+  border-top: 1px solid #e6e6e6;
+}
+
+.chat-unread-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 20px;
+  padding: 2px 4px;
+  line-height: 1;
+  font-size: .75rem;
 }

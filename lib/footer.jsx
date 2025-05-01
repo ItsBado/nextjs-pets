@@ -3,16 +3,20 @@
 import Link from "next/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import Chat from "./chat" // Import the Chat component  
 
 export default function Footer(props) {
   function AdminFooterOrNot() {
     if (props.isAdmin) {
       return (
-        <p className="logout-text">
-          <a href="" onClick={handleClick}>
-            Logout
-          </a>
-        </p>
+        <>
+          <Chat /> {/* Chat component */ } 
+          <p className="logout-text">
+            <a href="" onClick={handleClick}>
+              Logout
+            </a>
+          </p>
+        </>
       )
     } else {
       return <></>
